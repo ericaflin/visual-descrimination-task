@@ -11,6 +11,6 @@ nsubj = length(names)/2;
 subjects = {};
 
 for isubj = 1:nsubj
-    subj = extractBefore(names{((isubj-1)*2)+1,'spikes'};
+    subj = extractBefore(names{((isubj-1)*2)+1},'spikes');
     subjects{isubj} = subj;
 end
