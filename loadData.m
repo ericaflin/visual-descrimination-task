@@ -3,6 +3,9 @@
 
 function [beh,eye,neural] = loadData(subjects,nsubj,projDir)
 
+npy_path = [pwd,'/npy-matlab-master/npy-matlab']; %change to: added_path = '/path' for your required path
+addpath(npy_path);
+
 beh = struct;
 eye = struct;
 neural = struct;
@@ -16,9 +19,10 @@ for isubj = 1:nsubj
     beh(isubj).resp = readNPY([projDir,'/sorted_data/beh/resp/',subjects{isubj},'trials.response_choice.npy']);
     beh(isubj).wheelMove = readNPY([projDir,'/sorted_data/beh/resp/',subjects{isubj},'wheelMoves.type.npy']);
     beh(isubj).wheelPos = readNPY([projDir,'/sorted_data/beh/resp/',subjects{isubj},'wheel.position.npy']);
+    beh(isubj).wheelTime = readNPY([projDir,'/sorted_data/beh/resp/',subjects{isubj},'wheel.timestamps.npy']);
     eye(isubj).area = readNPY([projDir,'/sorted_data/eye/',subjects{isubj},'eye.area.npy']);
     eye(isubj).xypos = readNPY([projDir,'/sorted_data/eye/',subjects{isubj},'eye.xypos.npy']);
     eye(isubj).times = readNPY([projDir,'/sorted_data/eye/',subjects{isubj},'eye.timestamps.npy']);
-    neural(isubj).times = readNPY([projDir,'/sorted_data/neural/',subjects{isubj},'spikes.times.npy']);
-    neural(isubj).spikes = readNPY([projDir,'/sorted_data/neural/',subjects{isubj},'spikes.clusters.npy']);
 end
+
+rmpath(npy_path);
