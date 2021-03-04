@@ -1,14 +1,13 @@
 %% script to load in the files for the final project
 %output - beh - behavioral data for the project. Contains fields
 
-function [beh,eye,neural] = loadData(subjects,nsubj,projDir)
+function [beh,eye] = loadData(subjects,nsubj,projDir)
 
-npy_path = [pwd,'/npy-matlab-master/npy-matlab']; %change to: added_path = '/path' for your required path
+npy_path = [pwd,'/npy-matlab-master/npy-matlab'];
 addpath(npy_path);
 
 beh = struct;
 eye = struct;
-neural = struct;
 
 for isubj = 1:nsubj
     beh(isubj).goCue = readNPY([projDir,'/sorted_data/beh/times/',subjects{isubj},'trials.goCue_times.npy']);
