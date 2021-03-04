@@ -1,5 +1,18 @@
 %% script to load in the files for the final project
-%output - beh - behavioral data for the project. Contains fields
+%output - beh - behavioral data for the project. Contains fields:
+%               goCue - time audio cue sounded (ms)
+%               respTimes - time a response was logged (ms)
+%               stimTimes - time the stimulus appeared (ms)
+%               contrastLeft - contrast level of stimulus in left field
+%               contrastRight - contrast level of stimulus in right field
+%               resp - which response was logged (left, right, none)
+%               wheelMove - direction of wheel movement
+%               wheelPos - wheel position during trial
+%               wheelTime - timestamps for wheel pos
+%       - eye - eye tracking data for subject. Contains fields:
+%               area - area of pupil (au)
+%               xypos - xy position of gaze (au)
+%               times - time for eye position and area (ms)
 
 function [beh,eye] = loadData(subjects,nsubj,projDir)
 
