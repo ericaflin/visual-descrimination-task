@@ -3,6 +3,9 @@ function [] = isi_subject1_contrast(beh, spikes)
 %       -0.1 to 0.5 s relative to stimuli times to difference in left/right contrast 
 %       (high for difference of 1, medium for difference of 0.5,
 %       no contrast for difference of 0)
+
+fprintf("VISp neuron activity during stimulus of high, medium, and no difference between right and left:")
+
 subject1_beh = beh(1);
 subject1_spikes = spikes(1).VISpTimes;
 
@@ -22,7 +25,7 @@ end
 
 interspike_intervals_pooled = interspike_intervals_pooled(interspike_intervals_pooled > 0);
 figure
-title('VISp neuron activity at -100ms to 500ms relative to high contrast stimuli time (for subject 1)','fontsize',18)
+title({'VISp neuron activity at -100ms to 500ms]', 'relative to high contrast stimuli time (for subject 1)'},'fontsize',18)
 xlabel('ISI time (ms)','FontSize',14)
 ylabel('Frequency (Normalized proportion)','FontSize',14)
 hold on 
@@ -44,7 +47,7 @@ for cur_array_idx = 1:num_medium_diff_trials
 end
 interspike_intervals_pooled = interspike_intervals_pooled(interspike_intervals_pooled > 0);
 figure
-title('VISp neuron activity at -100ms to 500ms relative to medium contrast stimuli time (for subject 1)','fontsize',18)
+title({'VISp neuron activity at -100ms to 500ms','relative to medium contrast stimuli time (for subject 1)'},'fontsize',18)
 xlabel('ISI time (ms)','FontSize',14)
 ylabel('Frequency (Normalized proportion)','FontSize',14)
 hold on 
@@ -66,9 +69,13 @@ for cur_array_idx = 1:num_no_diff_trials
 end
 interspike_intervals_pooled = interspike_intervals_pooled(interspike_intervals_pooled > 0);
 figure
-title('VISp neuron activity at -100ms to 500ms relative to no contrast stimuli time (for subject 1)','fontsize',18)
+title({'VISp neuron activity at -100ms to 500ms','relative to no contrast stimuli time (for subject 1)'},'fontsize',18)
 xlabel('ISI time (ms)','FontSize',14)
 ylabel('Frequency (Normalized proportion)','FontSize',14)
 hold on 
 histogram(interspike_intervals_pooled,'Normalization','probability');   
 hold off
+
+fprintf("The ISI for high and medium differences between left/right are very similar. When there is no difference between left/right, there are relatively more interspike intervals on the shorter side -- there is more frequent spiking of the visual neuron when there is no difference between left/right.")
+
+end
