@@ -2,12 +2,15 @@ function [] = raster_subject1_directional(beh, spikes)
 %RASTER Provide raster for subject 1's motor neurons
 %       -0.5 to 1 s relative to response times to direction (left, right,
 %       neutral stimuli)
+
+fprintf("MOs neuron activity during response to left vs right vs neutral trials:")
+
 subject1_beh = beh(1);
 subject1_spikes = spikes(1).MOsTimes;
 
 % MOs response to left stimuli
 figure
-title('MOs neuron activity at response time for left stimuli (for subject 1)','fontsize',18)
+title({'MOs neuron activity at response time for','left stimuli (for subject 1)'},'fontsize',18)
 xlabel('Spike time (ms)','FontSize',14)
 ylabel('Trial','FontSize',14)
 hold on 
@@ -31,7 +34,7 @@ hold off
 
 % MOs response to right stimuli
 figure
-title('MOs neuron activity at response time for right stimuli (for subject 1)','fontsize',18)
+title({'MOs neuron activity at response time for','right stimuli (for subject 1)'},'fontsize',18)
 xlabel('Spike time (ms)','FontSize',14)
 ylabel('Trial','FontSize',14)
 hold on 
@@ -55,7 +58,7 @@ hold off
 
 % MOs response to neutral stimuli
 figure
-title('MOs neuron activity at respoonse time for neutral stimuli (for subject 1)','fontsize',18)
+title({'MOs neuron activity at respoonse time for','neutral stimuli (for subject 1)'},'fontsize',18)
 xlabel('Spike time (ms)','FontSize',14)
 ylabel('Trial','FontSize',14)
 hold on 
@@ -76,6 +79,8 @@ for cur_array_idx = 1:num_neutral_trials
 end
 set(gca,'YTick',(1:8:num_neutral_trials)-0.5,'YTickLabel',num_neutral_trials:-8:1)
 hold off
+
+fprintf("For the neutral stimuli, there is more neural activity at the response time, compared to when there was a clear left or right stimuli.")
 
 end
 
