@@ -12,7 +12,7 @@ for isubj = 1:1
         startInd = find(abs(eye(isubj).times(:,2)-startTimeBeh)<0.01,1);
         %get timestamps from eye data
         startTime = eye(isubj).times(startInd,2);
-        endTime = startTime(1) + 0.05;
+        endTime = startTime(1) + 0.5;
         %find closest timestamp to end
         endInd = find(abs(eye(isubj).times(:,2)-endTime)<0.01,1);
         %add to array
@@ -23,10 +23,10 @@ for isubj = 1:1
     leftTrial = find(beh(isubj).contrastLeft>beh(isubj).contrastRight);
     rightTrial = find(beh(isubj).contrastLeft<beh(isubj).contrastRight);
     %plot
-    plot(mean(x(:,leftTrial)),mean(y(:,leftTrial)),'color','r');
+    plot(mean(x(:,leftTrial),2),mean(y(:,leftTrial),2),'color','r');
     hold on;
-    plot(mean(x(:,rightTrial)),mean(y(:,rightTrial)),'color','b');
+    plot(mean(x(:,rightTrial),2),mean(y(:,rightTrial),2),'color','b');
     xlabel('x coordinate');
     ylabel('y coordinate');
-    legend('leftTrial','rightTrial');
+    legend('leftTrial','rightTrial','Location','SouthEast');
 end
