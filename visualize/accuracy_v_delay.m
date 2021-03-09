@@ -29,7 +29,7 @@ for i = 1:100
     resampData = bootstrap(delaysIncorrectTrials,100);
     delayError(i) = mean(resampData);
 end
-delayError = std(delayError);
+delayError = 3*std(delayError);
 %plot error
 [binsHigh,edgesHigh] = histcounts(delaysIncorrectTrials+delayError,'BinWidth',.01);
 [binsLow,edgesLow] = histcounts(delaysIncorrectTrials-delayError,'BinWidth',.01);

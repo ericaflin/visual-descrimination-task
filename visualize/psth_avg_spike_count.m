@@ -54,7 +54,7 @@ for i = 1:10
     [fake_counts_total,fake_edges] = histcounts(fake_pool,-100:10:500);
     fake_avg(i) = mean(fake_counts_total/num_trials);
 end
-CI = std(fake_avg);
+CI = 3*std(fake_avg);
 
 figure
 title({'MOs avg spike counts at -100ms to 500ms', 'relative to stimuli time (for subject 1)'},'fontsize',18)

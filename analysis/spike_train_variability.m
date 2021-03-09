@@ -65,12 +65,12 @@ for trial_index = 1:num_trials
     num_spikes_after_response = [num_spikes_after_response ; num_spikes];
 end
 % generate synthetic data to test pvalues
-fake_data_before_stimulus = randn(size(num_spikes_before_stimulus));
-fake_data_after_stimulus = randn(size(num_spikes_after_stimulus));
-fake_data_before_goCue = randn(size(num_spikes_before_go_cue));
-fake_data_after_goCue = randn(size(num_spikes_after_go_cue));
-fake_data_before_resp = randn(size(num_spikes_before_response));
-fake_data_after_resp = randn(size(num_spikes_after_response));
+fake_data_before_stimulus = mean(num_spikes_before_stimulus)+std(num_spikes_before_stimulus)*randn(size(num_spikes_before_stimulus));
+fake_data_after_stimulus = mean(num_spikes_after_stimulus)+std(num_spikes_after_stimulus)*randn(size(num_spikes_after_stimulus));
+fake_data_before_goCue = mean(num_spikes_before_go_cue)+std(num_spikes_before_go_cue)*randn(size(num_spikes_before_go_cue));
+fake_data_after_goCue = mean(num_spikes_after_go_cue)+std(num_spikes_after_go_cue)*randn(size(num_spikes_after_go_cue));
+fake_data_before_resp = mean(num_spikes_before_response)+std(num_spikes_before_response)*randn(size(num_spikes_before_response));
+fake_data_after_resp = mean(num_spikes_after_response)+std(num_spikes_after_response)*randn(size(num_spikes_after_response));
 % Fano Factors
 fprintf("MOs Fano Factor for spike count 50 ms before stimulus")
 var(num_spikes_before_stimulus) / mean(num_spikes_before_stimulus)
