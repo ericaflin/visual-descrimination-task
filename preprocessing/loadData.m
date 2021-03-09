@@ -14,13 +14,14 @@
 %               xypos - xy position of gaze (au)
 %               times - time for eye position and area (ms)
 
-function [beh,eye] = loadData(subjects,nsubj,projDir)
+function [beh,eye,neural] = loadData(subjects,nsubj,projDir)
 
 npy_path = [pwd,'/npy-matlab-master/npy-matlab'];
 addpath(npy_path);
 
 beh = struct;
 eye = struct;
+neural = struct;
 
 for isubj = 1:nsubj
     beh(isubj).goCue = readNPY([projDir,'/sorted_data/beh/times/',subjects{isubj},'trials.goCue_times.npy']);
@@ -35,6 +36,8 @@ for isubj = 1:nsubj
     eye(isubj).area = readNPY([projDir,'/sorted_data/eye/',subjects{isubj},'eye.area.npy']);
     eye(isubj).xypos = readNPY([projDir,'/sorted_data/eye/',subjects{isubj},'eye.xypos.npy']);
     eye(isubj).times = readNPY([projDir,'/sorted_data/eye/',subjects{isubj},'eye.timestamps.npy']);
+    neural(isubj).times = readNPY([projDir,'/sorted_data/neural/',subjects{isubj},'spikes.times.npy']);
+    neural(isubj).clusters = readNPY([projDir,'/sorted_data/neural/',subjects{isubj},'spikes.clusters.npy']);
 end
 
 rmpath(npy_path);

@@ -1,17 +1,35 @@
+function spikes = selectClusters(index1,index2,nsubj,neural,type)
+
 spikes = struct;
+if strcmp(type,'pca')==1
+    spikes.VISpTimes = {};
+    spikes.MOsTimes = {};
+end
 for isubj = 1:nsubj
     nclusters = length(index1{:,isubj});
     ind1 = index1{:,isubj};
     temp = [];
     for i = 1:nclusters
-        temp = [temp;find(neural(isubj).spikes==ind1(i))];
+        if strcmp(type,'pca')==1 && isubj == 1
+            spikes.VISpTimes{i} = neural(isubj).times(find(neural(isubj).clusters==ind1(i)));
+        else
+            temp = [temp;find(neural(isubj).clusters==ind1(i))];
+        end
     end
-    spikes(isubj).VISpTimes = neural(isubj).times(temp);
+    if strcmp(type,'pca')~=1
+        spikes(isubj).VISpTimes = neural(isubj).times(temp);
+    end
     nclusters = length(index2{:,isubj});
     ind2 = index2{:,isubj};
     temp = [];
     for i = 1:nclusters
-        temp = [temp;find(neural(isubj).spikes==ind2(i))];
+        if strcmp(type,'pca')==1 && isubj == 1
+            spikes.MOsTimes{i} = neural(isubj).times(find(neural(isubj).clusters==ind2(i)));
+        else
+            temp = [temp;find(neural(isubj).clusters==ind2(i))];
+        end
     end
-    spikes(isubj).MOsTimes = neural(isubj).times(temp);
+    if strcmp(type,'pca')~=1
+        spikes(isubj).MOsTimes = neural(isubj).times(temp);
+    end
 end
