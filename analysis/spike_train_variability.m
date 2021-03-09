@@ -64,20 +64,32 @@ for trial_index = 1:num_trials
     num_spikes = subject1_spikes_MOs(subject1_spikes_MOs >= stim_time & subject1_spikes_MOs <= stim_time + 0.050);
     num_spikes_after_response = [num_spikes_after_response ; num_spikes];
 end
-
+% generate synthetic data to test pvalues
+fake_data_before_stimulus = randn(size(num_spikes_before_stimulus));
+fake_data_after_stimulus = randn(size(num_spikes_after_stimulus));
+fake_data_before_goCue = randn(size(num_spikes_before_go_cue));
+fake_data_after_goCue = randn(size(num_spikes_after_go_cue));
+fake_data_before_resp = randn(size(num_spikes_before_response));
+fake_data_after_resp = randn(size(num_spikes_after_response));
 % Fano Factors
 fprintf("MOs Fano Factor for spike count 50 ms before stimulus")
 var(num_spikes_before_stimulus) / mean(num_spikes_before_stimulus)
+p = 2*pval(num_spikes_before_stimulus,fake_data_before_stimulus)
 fprintf("MOs Fano Factor for spike count 50 ms after stimulus")
 var(num_spikes_after_stimulus) / mean(num_spikes_after_stimulus)
+p = 2*pval(num_spikes_after_stimulus,fake_data_after_stimulus)
 fprintf("MOs Fano Factor for spike count 50 ms before go cue")
-var(num_spikes_before_stimulus) / mean(num_spikes_before_go_cue)
+var(num_spikes_before_go_cue) / mean(num_spikes_before_go_cue)
+p = 2*pval(num_spikes_before_go_cue,fake_data_before_goCue)
 fprintf("MOs Fano Factor for spike count 50 ms after go cue")
-var(num_spikes_after_stimulus) / mean(num_spikes_after_go_cue)
+var(num_spikes_after_go_cue) / mean(num_spikes_after_go_cue)
+p = 2*pval(num_spikes_after_go_cue,fake_data_after_goCue)
 fprintf("MOs Fano Factor for spike count 50 ms before response")
-var(num_spikes_before_stimulus) / mean(num_spikes_before_response)
+var(num_spikes_before_response) / mean(num_spikes_before_response)
+p = 2*pval(num_spikes_before_response,fake_data_before_resp)
 fprintf("MOs Fano Factor for spike count 50 ms after response")
-var(num_spikes_after_stimulus) / mean(num_spikes_after_response)
+var(num_spikes_after_response) / mean(num_spikes_after_response)
+p = 2*pval(num_spikes_after_response,fake_data_after_resp)
 
 % Interpretation
 fprintf("Fano Factor of spike count in MOs is always higher " + ... 
