@@ -1,3 +1,6 @@
+%% plots wheel position as a function of time
+
+fprintf('show wheel position during the trial from stimulus presentation')
 figure;
 for isubj = 1:1
     ntrials = length(beh(isubj).stimTimes);
@@ -25,4 +28,7 @@ for isubj = 1:1
     xticklabels([0,1,2]);
     ylabel('position (mm)');
     legend('leftTrial','rightTrial');
+    title('mean wheel position during trial for different stimulus conditions')
 end
+
+fprintf('wheel position decreases for rightward responses, and increases for leftward responses, which shows the animal was successfully manipulating the wheel')

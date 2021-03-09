@@ -1,5 +1,6 @@
 %% helper to plot gaze position after stimulus appearance
 
+fprintf('plot gaze position for subject 1 for 500 ms after stimulus apppears')
 figure;
 for isubj = 1:1
     ntrials = length(beh(isubj).stimTimes);
@@ -29,4 +30,7 @@ for isubj = 1:1
     xlabel('x coordinate');
     ylabel('y coordinate');
     legend('leftTrial','rightTrial','Location','SouthEast');
+    title('eye position during left and right conditions');
 end
+
+fprintf('we see that the mouses gaze seems to be drawn toward the side of the screen with the higher contrast stimulus')
