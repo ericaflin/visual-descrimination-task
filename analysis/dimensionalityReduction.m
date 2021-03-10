@@ -7,7 +7,7 @@ k = 10;
 nneurons = size(condSpikeCounts,3);
 reshapedSpikes = reshape(condSpikeCounts,[150*3,nneurons]);
 c = cvpartition(450,"KFold",k);
-normSpikes = reshapedSpikes./((max(reshapedSpikes)-min(reshapedSpikes))+2);
+normSpikes = reshapedSpikes./((max(reshapedSpikes)-min(reshapedSpikes))+0.2);
 pcsToTest = [1,5,10,25,50,100];
 resvar = zeros([k,length(pcsToTest)]);
 for i = 1:k
@@ -49,4 +49,4 @@ xticklabels(pcsToTest);
 xlabel('number of dimensions');
 ylabel('error');
 title('error of low dimensional state in time after go cue');
-fprintf('error grows with more dimensions. It may be the secondary motor area isnt very modulated in the time after stimulus presentation')
+fprintf('error grows with more dimensions. It may be the secondary motor area isnt very modulated in this task')

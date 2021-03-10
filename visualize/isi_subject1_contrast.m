@@ -31,6 +31,7 @@ ylabel('Frequency (Normalized proportion)','FontSize',14)
 hold on 
 histogram(interspike_intervals_pooled,'Normalization','probability');   
 hold off
+print('contrastHigh_ISI','-dpng');
 
 % VISp response to medium difference (0.5) between left and right contrasts
 medium_diff_trial_indices = find(abs(subject1_beh.contrastLeft - subject1_beh.contrastRight) == 0.5);
@@ -53,6 +54,7 @@ ylabel('Frequency (Normalized proportion)','FontSize',14)
 hold on 
 histogram(interspike_intervals_pooled,'Normalization','probability');   
 hold off
+print('contrastMed_ISI','-dpng');
 
 % VISp response to no difference (0) between left and right contrasts
 no_diff_trial_indices = find(abs(subject1_beh.contrastLeft - subject1_beh.contrastRight) == 0);
@@ -75,6 +77,7 @@ ylabel('Frequency (Normalized proportion)','FontSize',14)
 hold on 
 histogram(interspike_intervals_pooled,'Normalization','probability');   
 hold off
+print('contrastLow_ISI','-dpng');
 
 fprintf("The ISI for high and medium differences between left/right are very similar. When there is no difference between left/right, there are relatively more interspike intervals on the shorter side -- there is more frequent spiking of the visual neuron when there is no difference between left/right.")
 

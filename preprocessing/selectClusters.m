@@ -10,7 +10,7 @@ for isubj = 1:nsubj
     ind1 = index1{:,isubj};
     temp = [];
     for i = 1:nclusters
-        if strcmp(type,'pca')==1 && isubj == 1
+        if strcmp(type,'pca')==1 && isubj == 17
             spikes.VISpTimes{i} = neural(isubj).times(find(neural(isubj).clusters==ind1(i)));
         else
             temp = [temp;find(neural(isubj).clusters==ind1(i))];
@@ -23,7 +23,7 @@ for isubj = 1:nsubj
     ind2 = index2{:,isubj};
     temp = [];
     for i = 1:nclusters
-        if strcmp(type,'pca')==1 && isubj == 1
+        if strcmp(type,'pca')==1 && isubj == 17
             spikes.MOsTimes{i} = neural(isubj).times(find(neural(isubj).clusters==ind2(i)));
         else
             temp = [temp;find(neural(isubj).clusters==ind2(i))];

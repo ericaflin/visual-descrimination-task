@@ -8,8 +8,8 @@ function [] = spike_train_variability(beh, spikes)
 
 fprintf("Find the Fano Factor of 50 ms before audio go-cue, 50 ms after audio go-cue, 50 ms before visual go-cue, and 50 ms after visual go-cue.")
 
-subject1_beh = beh(1);
-subject1_spikes_MOs = spikes(1).MOsTimes;
+subject1_beh = beh(17);
+subject1_spikes_MOs = spikes(17).MOsTimes;
 
 % MOs, 50 ms before stimulus
 num_trials = 214;
@@ -74,22 +74,22 @@ fake_data_after_resp = mean(num_spikes_after_response)+std(num_spikes_after_resp
 % Fano Factors
 fprintf("MOs Fano Factor for spike count 50 ms before stimulus")
 var(num_spikes_before_stimulus) / mean(num_spikes_before_stimulus)
-p = 2*pval(num_spikes_before_stimulus,fake_data_before_stimulus)
+p = pval(num_spikes_before_stimulus,fake_data_before_stimulus)
 fprintf("MOs Fano Factor for spike count 50 ms after stimulus")
 var(num_spikes_after_stimulus) / mean(num_spikes_after_stimulus)
-p = 2*pval(num_spikes_after_stimulus,fake_data_after_stimulus)
+p = pval(num_spikes_after_stimulus,fake_data_after_stimulus)
 fprintf("MOs Fano Factor for spike count 50 ms before go cue")
 var(num_spikes_before_go_cue) / mean(num_spikes_before_go_cue)
-p = 2*pval(num_spikes_before_go_cue,fake_data_before_goCue)
+p = pval(num_spikes_before_go_cue,fake_data_before_goCue)
 fprintf("MOs Fano Factor for spike count 50 ms after go cue")
 var(num_spikes_after_go_cue) / mean(num_spikes_after_go_cue)
-p = 2*pval(num_spikes_after_go_cue,fake_data_after_goCue)
+p = pval(num_spikes_after_go_cue,fake_data_after_goCue)
 fprintf("MOs Fano Factor for spike count 50 ms before response")
 var(num_spikes_before_response) / mean(num_spikes_before_response)
-p = 2*pval(num_spikes_before_response,fake_data_before_resp)
+p = pval(num_spikes_before_response,fake_data_before_resp)
 fprintf("MOs Fano Factor for spike count 50 ms after response")
 var(num_spikes_after_response) / mean(num_spikes_after_response)
-p = 2*pval(num_spikes_after_response,fake_data_after_resp)
+p = pval(num_spikes_after_response,fake_data_after_resp)
 
 % Interpretation
 fprintf("Fano Factor of spike count in MOs is always higher " + ... 

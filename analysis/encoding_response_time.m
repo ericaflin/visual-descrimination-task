@@ -10,11 +10,11 @@ fprintf("Linear regression for response time on MOs spike rate " + ...
     "50 ms before visual go-cue, and 50 ms after go-cue " + ...
     "50 ms before response, and 50 ms after response.")
 
-subject1_beh = beh(1);
-subject1_spikes_MOs = spikes(1).MOsTimes;
+subject1_beh = beh(17);
+subject1_spikes_MOs = spikes(17).MOsTimes;
 
 % MOs, 50 ms before stimulus
-num_trials = 214;
+num_trials = length(subject1_beh.goCue);
 num_spikes_before_stimulus = 0;
 for trial_index = 1:num_trials
     stim_time = subject1_beh.stimTimes(trial_index);
@@ -24,7 +24,6 @@ end
 spike_rates_before_stimulus = num_spikes_before_stimulus(2:end) / 0.050; % spikes / s
 
 % MOs, 50 ms after stimulus
-num_trials = 214;
 num_spikes_after_stimulus = 0;
 for trial_index = 1:num_trials
     stim_time = subject1_beh.stimTimes(trial_index);
@@ -34,7 +33,6 @@ end
 spike_rates_after_stimulus = num_spikes_after_stimulus(2:end) / 0.050; % spikes / s
 
 % MOs, 50 ms before go cue
-num_trials = 214;
 num_spikes_before_go_cue = 0;
 for trial_index = 1:num_trials
     stim_time = subject1_beh.goCue(trial_index);
@@ -44,7 +42,6 @@ end
 spike_rates_before_go_cue = num_spikes_before_go_cue(2:end) / 0.050; % spikes / s
 
 % MOs, 50 ms after go cue
-num_trials = 214;
 num_spikes_after_go_cue = 0;
 for trial_index = 1:num_trials
     stim_time = subject1_beh.goCue(trial_index);
@@ -54,7 +51,6 @@ end
 spike_rates_after_go_cue = num_spikes_after_go_cue(2:end) / 0.050; % spikes / s
 
 % MOs, 50 ms before response
-num_trials = 214;
 num_spikes_before_response = 0;
 for trial_index = 1:num_trials
     stim_time = subject1_beh.respTimes(trial_index);
@@ -64,7 +60,6 @@ end
 spike_rates_before_response = num_spikes_before_response(2:end) / 0.050; % spikes / s
 
 % MOs, 50 ms after response
-num_trials = 214;
 num_spikes_after_response = 0;
 for trial_index = 1:num_trials
     stim_time = subject1_beh.respTimes(trial_index);

@@ -26,15 +26,13 @@ title('distribution of incorrect responses sorted by delay length');
 hold on;
 %make error bars using bootstrapped data
 for i = 1:100
-    resampData = bootstrap(delaysIncorrectTrials,100);
+    resampData = bootstrap(bins,100);
     delayError(i) = mean(resampData);
 end
-delayError = 3*std(delayError);
+delayError = std(delayError);
 %plot error
-[binsHigh,edgesHigh] = histcounts(delaysIncorrectTrials+delayError,'BinWidth',.01);
-[binsLow,edgesLow] = histcounts(delaysIncorrectTrials-delayError,'BinWidth',.01);
-histogram('BinCounts',binsHigh,'BinEdges',edgesHigh,'FaceColor','none','EdgeColor','r');
-histogram('BinCounts',binsLow,'BinEdges',edgesLow,'FaceColor','none','EdgeColor','y');
+histogram('BinCounts',bins+delayError,'BinEdges',edges,'FaceColor','none','EdgeColor','r');
+histogram('BinCounts',bins-delayError,'BinEdges',edges,'FaceColor','none','EdgeColor','y');
 xlim([0.35,1.25]);
 
 

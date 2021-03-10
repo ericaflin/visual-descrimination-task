@@ -6,8 +6,8 @@ function [] = classify_response_speed(beh, spikes)
 
 fprintf("Classify reaction speeds as fast (< 1 sec) or slow (> 2 sec)")
 
-subject1_beh = beh(1);
-subject1_spikes_MOs = spikes(1).MOsTimes;
+subject1_beh = beh(17);
+subject1_spikes_MOs = spikes(17).MOsTimes;
 
 response_times = subject1_beh.respTimes - subject1_beh.stimTimes;
 fast_response_indices = find(response_times <= 1);
@@ -15,7 +15,7 @@ slow_response_indices = find(response_times >= 2);
 relevant_indices = [fast_response_indices ; slow_response_indices];
 
 num_time_bins = 50;
-num_trials = 214;
+num_trials = length(subject1_beh.goCue);
 spikecounts_over_time = zeros(num_trials,num_time_bins);
 for trial_index = 1:num_trials
     response_time = subject1_beh.respTimes(trial_index);

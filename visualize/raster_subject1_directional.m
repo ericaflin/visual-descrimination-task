@@ -5,8 +5,8 @@ function [] = raster_subject1_directional(beh, spikes)
 
 fprintf("MOs neuron activity during response to left vs right vs neutral trials:")
 
-subject1_beh = beh(1);
-subject1_spikes = spikes(1).MOsTimes;
+subject1_beh = beh(17);
+subject1_spikes = spikes(17).MOsTimes;
 
 % MOs response to left stimuli
 figure
@@ -31,6 +31,7 @@ for cur_array_idx = 1:num_left_trials
 end
 set(gca,'YTick',(1:8:num_left_trials)-0.5,'YTickLabel',num_left_trials:-8:1)
 hold off
+print('Left_raster','-dpng');
 
 % MOs response to right stimuli
 figure
@@ -55,6 +56,7 @@ for cur_array_idx = 1:num_right_trials
 end
 set(gca,'YTick',(1:8:num_right_trials)-0.5,'YTickLabel',num_right_trials:-8:1)
 hold off
+print('Right_raster','-dpng');
 
 % MOs response to neutral stimuli
 figure
@@ -79,6 +81,7 @@ for cur_array_idx = 1:num_neutral_trials
 end
 set(gca,'YTick',(1:8:num_neutral_trials)-0.5,'YTickLabel',num_neutral_trials:-8:1)
 hold off
+print('neutral_raster','-dpng');
 
 fprintf("For the neutral stimuli, there is more neural activity at the response time, compared to when there was a clear left or right stimuli.")
 
