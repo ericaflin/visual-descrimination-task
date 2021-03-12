@@ -18,7 +18,7 @@ for isubj = 1:nsesh
     delaysIncorrectTrials = [delaysIncorrectTrials;delay(incorrectTrials)];
 end
 %plot
-[bins,edges] = histcounts(delaysIncorrectTrials,'BinWidth',.01);%,'FaceColor','k','FaceAlpha',0.8);
+[bins,edges] = histcounts(delaysIncorrectTrials,'BinWidth',.050);%,'FaceColor','k','FaceAlpha',0.8);
 histogram('BinCounts',bins,'BinEdges',edges);
 ylabel('# trials incorrect');
 xlabel('delay length (s)');
