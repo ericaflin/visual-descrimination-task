@@ -8,7 +8,7 @@
 function [p,tail] = pval(truedata,synthdist)
 
 %if truedata is in the upper half of the dist
-if truedata>=mean(synthdist)
+if mean(truedata)>=mean(synthdist)
     %calculate area under curve from truedata to infinity
     p = sum(synthdist>truedata)/length(synthdist);
     tail = 1; %upper tail

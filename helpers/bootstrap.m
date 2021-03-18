@@ -8,12 +8,12 @@
 function resampDist = bootstrap(data,resampleRate)
 datasize = numel(data);
 %create vector to store data in before we take the mean
-runningresampDist = zeros(size(data),'double');
+runningresampDist = 0;
 for i = 1:resampleRate
     %randomly choose data points to include in new sample
-    rng('default');
+    rng('shuffle');
     index = randi(datasize,[datasize,1]);
-    resampData = data(index);
+    resampData = data(:,index);
     %add the resampled data to the running total
     runningresampDist = runningresampDist + resampData;
 end

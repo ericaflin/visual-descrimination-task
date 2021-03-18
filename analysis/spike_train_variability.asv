@@ -70,7 +70,7 @@ xticklabels([-50:50:200]);
 
 subplot(3,1,2);
 hold on;
-for iunit = 1:1
+for iunit = tunedUnits_stim(tunedUnits_stim~=115)%1:1
     for i = 1:2
         plot([1:nwindows],squeeze(fanoFactor_goCue(4,i,:)),'color',color(i));
     end
@@ -81,7 +81,7 @@ xticklabels([-50:50:200]);
 
 subplot(3,1,3);
 hold on;
-for iunit = 1:1
+for iunit = tunedUnits_resp(tunedUnits_res~=115)
     for i = 1:2
         plot([1:nwindows],squeeze(fanoFactor_resp(4,i,:)),'color',color(i));
     end

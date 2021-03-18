@@ -5,6 +5,9 @@ figure;
 for isubj = 1:1
     ntrials = length(beh(isubj).stimTimes);
     npos = length(beh(isubj).wheelPos);
+%     high_diff_trial_indices = find(abs(beh(isubj).contrastLeft - beh(isubj).contrastRight) == 1);
+%     medium_diff_trial_indices = find(abs(beh(isubj).contrastLeft - beh(isubj).contrastRight) == 0.5);
+%     no_diff_trial_indices = find(abs(beh(isubj).contrastLeft - beh(isubj).contrastRight) == 0);
     wheelTimes = linspace(beh(isubj).wheelTime(1,2),beh(isubj).wheelTime(2,2),npos);
     wheelPos = [];
     for itrial = 1:ntrials
@@ -25,7 +28,7 @@ for isubj = 1:1
     plot([1:length(wheelPos(:,rightTrial))],mean(wheelPos(:,rightTrial),2),'color','b');
     xlabel('time (s)');
     xticks([0,2500,5000]);
-    xticklabels([0,1,2]);
+    xticklabels([-0.5,0.5,1.5]);
     ylabel('position (mm)');
     legend('leftTrial','rightTrial');
     title('mean wheel position during trial for different stimulus conditions')

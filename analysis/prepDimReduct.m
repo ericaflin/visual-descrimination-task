@@ -3,11 +3,11 @@
 function condSpikeCounts = prepDimReduct(beh,spike_pca)
 ntrials = length(beh(17).goCue);
 nunits = length(spike_pca.MOsTimes);
-condSpikeCounts = zeros([150,3,nunits]);
-startTime = -500;
-endTime = 1000;
+condSpikeCounts = zeros([30,3,nunits]);
+startTime = -100;
+endTime = 200;
 for itrial = 1:ntrials
-    stimTime = beh(17).goCue(itrial)*1000;
+    stimTime = beh(17).resp(itrial)*1000;
     for iunit = 1:nunits
         unitActivity = spike_pca.MOsTimes(iunit);
         spikeCounts(:,itrial,iunit) = histcounts(cell2mat(unitActivity)*1000-stimTime,[startTime:10:endTime]);
