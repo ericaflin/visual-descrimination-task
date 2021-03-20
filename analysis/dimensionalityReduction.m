@@ -16,7 +16,7 @@ for i = 1:nneurons
 end
 normSpikes(:,toDelete) = [];
 nneurons = size(normSpikes,2);
-pcsToTest = [1:90];
+pcsToTest = [1:nneurons];
 resvar = zeros([k,nneurons,length(pcsToTest)]);
 for i = 1:k
     %crossvalidate
@@ -53,10 +53,10 @@ for i = 1:k
 end
 figure;
 plot([1:length(pcsToTest)],squeeze(nanmean(nanmean(resvar,2),1)));
-xticks([1,10,20,30,40,50,60,70,80,90]);
-xticklabels([1,10,20,30,40,50,60,70,80,90]);
+xticks([1,10,20,30,40,50,55,70,80,90]);
+xticklabels([1,10,20,30,40,50,55,70,80,90]);
 xlabel('number of dimensions');
 ylabel('error');
-xlim([1,85]);
+xlim([1,55]);
 title('error of low dimensional state in time near response');
 fprintf('error grows after 80')
