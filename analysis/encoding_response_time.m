@@ -34,6 +34,7 @@ for iunit = 1:nunits
 end
 
 tunedUnits_stim = find_tuned_neurons(spikeCounts_stim,beh,2);
+tunedUnits_stim = tunedUnits_stim.index;
 leftTrial = find(beh(17).contrastLeft>beh(17).contrastRight);
 
 % MOs, 50 ms before stimulus
@@ -92,13 +93,13 @@ spike_rates_after_response = num_spikes_after_response(2:end) / 0.050; % spikes 
 
 % Linear regression
 response_times = subject1_beh.respTimes - subject1_beh.stimTimes;
-left_response_times = response_times(leftTrial)
+left_response_times = response_times(leftTrial);
 predictors = horzcat(spike_rates_before_stimulus, spike_rates_after_stimulus, spike_rates_before_go_cue, spike_rates_after_go_cue, spike_rates_before_response, spike_rates_after_response)
+
 mdl = fitlm(predictors, left_response_times);
 model_coeffs = mdl.Coefficients
 model_summary = anova(mdl,'summary')
 
 % Interpretation
-fprintf("The model is not a great fit, as the P-values are high. These neurons don't encode spike time.")
 end
 

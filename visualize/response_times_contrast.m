@@ -47,6 +47,4 @@ histogram(no_diff_response_times,'Normalization','probability','BinWidth',.050);
 hold off
 print('diffNone_responseTime','-dpng');
 
-fprintf("The mouse had relatively faster reaction speeds when there was higher difference between right/left stimuli. We can see that when there was no difference in left/right stimuli, the mouse had a far higher proportion of slow responses.")
-
 end

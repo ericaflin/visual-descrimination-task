@@ -82,8 +82,4 @@ svm_percentage_classified_correctly_final = mean(svm_validations);
 
 fprintf("\nsvm_percentage_classified_correctly = %3.2f%%", svm_percentage_classified_correctly_final)
 
-% Interpretation
-fprintf("\nClassification percentage for all 3 models were quite low, between approximately 60-68%. Regular GLM had the lowest percentage, at approximately ~60%. Lasso GLM did the best, at almost 70%.")
-
-
 end

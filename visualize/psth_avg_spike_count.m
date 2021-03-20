@@ -67,6 +67,4 @@ histogram('BinEdges',edges,'BinCounts',spike_counts_avg-CI,'FaceColor','none','E
 hold off
 print('MOs_psth','-dpng');
 
-fprintf("Overall, there is higher spike count for the visual neurons compared to the motor neurons. The motor neurons peak slightly before the visual neurons.")
-
 end
